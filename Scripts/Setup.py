@@ -75,15 +75,27 @@ def mask_key(key):
     return key[:6] + '*' * (len(key) - 6)
 
 def update_api_keys(api_keys_path):
-    with open(api_keys_path, 'r') as file:
-        keys = json.load(file)
-    
-    print("Which keys would you like to update? (leave blank to keep current value)")
-    for key in keys:
-        masked_key = mask_key(keys[key]) if keys[key] else 'Not Set'
-        new_value = input(f"{key} (current: {masked_key}): ").strip()
-        if new_value:
-            keys[key] = new_value
+    keys = {}
+    if os.path.exists(api_keys_path) and os.path.getsize(api_keys_path) > 0:
+        with open(api_keys_path, 'r') as file:
+            try:
+                keys = json.load(file)
+            except json.JSONDecodeError:
+                print("API keys file is corrupted or invalid JSON.")
+                keys = {}
+    else:
+        print("API keys file is empty or does not exist.")
+
+    if not keys:
+        print("Please provide the API keys.")
+        keys = get_api_keys(api_keys_path)
+    else:
+        print("Which keys would you like to update? (leave blank to keep current value)")
+        for key in keys:
+            masked_key = mask_key(keys[key]) if keys[key] else 'Not Set'
+            new_value = input(f"{key} (current: {masked_key}): ").strip()
+            if new_value:
+                keys[key] = new_value
     
     save_api_keys(keys, api_keys_path)
 
@@ -107,24 +119,7 @@ def main():
 
     # Check if the API keys file exists and is valid
     if os.path.exists(api_keys_path):
-        with open(api_keys_path, 'r') as file:
-            try:
-                keys = json.load(file)
-                # Check if required keys are present
-                required_keys = [
-                    "Trakt Client ID", "Trakt Client Secret", "Trakt Authorization Code",
-                    "Real-Debrid API Key", "TMDB API KEY"
-                ]
-                if any(key not in keys or not keys[key] for key in required_keys):
-                    print("API keys file is missing some required data or is invalid.")
-                    update_choice = input("Would you like to update the API keys? (yes/no): ").strip().lower()
-                    if update_choice == 'yes':
-                        update_api_keys(api_keys_path)
-                else:
-                    print("API keys are valid.")
-            except json.JSONDecodeError:
-                print("API keys file is corrupted or invalid JSON.")
-                update_api_keys(api_keys_path)
+        update_api_keys(api_keys_path)
     else:
         get_api_keys(api_keys_path)
 
