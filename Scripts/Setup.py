@@ -80,7 +80,7 @@ def update_api_keys(api_keys_path):
     
     print("Which keys would you like to update? (leave blank to keep current value)")
     for key in keys:
-        masked_key = mask_key(keys[key])
+        masked_key = mask_key(keys[key]) if keys[key] else 'Not Set'
         new_value = input(f"{key} (current: {masked_key}): ").strip()
         if new_value:
             keys[key] = new_value
@@ -105,13 +105,30 @@ def main():
     os.makedirs(os.path.dirname(rd_key_path), exist_ok=True)
     os.makedirs(os.path.dirname(cache_path), exist_ok=True)
 
+    # Check if the API keys file exists and is valid
     if os.path.exists(api_keys_path):
-        update_choice = input("API keys already exist. Would you like to update them? (yes/no): ").strip().lower()
-        if update_choice == 'yes':
-            update_api_keys(api_keys_path)
+        with open(api_keys_path, 'r') as file:
+            try:
+                keys = json.load(file)
+                # Check if required keys are present
+                required_keys = [
+                    "Trakt Client ID", "Trakt Client Secret", "Trakt Authorization Code",
+                    "Real-Debrid API Key", "TMDB API KEY"
+                ]
+                if any(key not in keys or not keys[key] for key in required_keys):
+                    print("API keys file is missing some required data or is invalid.")
+                    update_choice = input("Would you like to update the API keys? (yes/no): ").strip().lower()
+                    if update_choice == 'yes':
+                        update_api_keys(api_keys_path)
+                else:
+                    print("API keys are valid.")
+            except json.JSONDecodeError:
+                print("API keys file is corrupted or invalid JSON.")
+                update_api_keys(api_keys_path)
     else:
         get_api_keys(api_keys_path)
-    
+
+    # Proceed with fetching and processing user data
     with open(api_keys_path, 'r') as file:
         keys = json.load(file)
     
