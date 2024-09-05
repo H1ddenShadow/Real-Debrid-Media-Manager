@@ -3,6 +3,10 @@ import json
 import requests
 import pickle
 import subprocess
+import time
+
+MAX_RETRIES = 3
+RETRY_DELAY = 5  # seconds
 
 def run_check_script():
     """Run the Check.py script."""
@@ -36,30 +40,48 @@ def save_api_keys(keys, api_keys_path):
             "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
             "grant_type": "authorization_code"
         }
-        response = requests.post(trakt_token_url, json=payload)
-        response_data = response.json()
-        keys["Trakt Client Access Token"] = response_data.get("access_token", "")
-
-        # Remove sensitive information
-        keys.pop("Trakt Client Secret", None)
-        keys.pop("Trakt Authorization Code", None)
-
+        attempt = 0
+        while attempt < MAX_RETRIES:
+            try:
+                response = requests.post(trakt_token_url, json=payload)
+                response.raise_for_status()
+                response_data = response.json()
+                keys["Trakt Client Access Token"] = response_data.get("access_token", "")
+                # Remove sensitive information
+                keys.pop("Trakt Client Secret", None)
+                keys.pop("Trakt Authorization Code", None)
+                break
+            except requests.exceptions.RequestException as e:
+                attempt += 1
+                if attempt < MAX_RETRIES:
+                    print(f"Error exchanging Trakt Authorization Code for Access Token: {e}. Retrying in {RETRY_DELAY} seconds...")
+                    time.sleep(RETRY_DELAY)
+                else:
+                    print(f"Failed to exchange Trakt Authorization Code after {MAX_RETRIES} attempts.")
+                    raise
     with open(api_keys_path, 'w') as file:
         json.dump(keys, file, indent=4)
 
 def fetch_user_data(api_key):
-    """Fetch user data from Real-Debrid."""
+    """Fetch user data from Real-Debrid with retry mechanism."""
     url = 'https://api.real-debrid.com/rest/1.0/user'
     headers = {
         'Authorization': f'Bearer {api_key}'
     }
-    try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print(f'Error fetching user data: {e}')
-        return None
+    attempt = 0
+    while attempt < MAX_RETRIES:
+        try:
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            attempt += 1
+            if attempt < MAX_RETRIES:
+                print(f'Error fetching user data: {e}. Retrying in {RETRY_DELAY} seconds...')
+                time.sleep(RETRY_DELAY)
+            else:
+                print(f'Failed to fetch user data after {MAX_RETRIES} attempts.')
+                return None
 
 def cache_data(data, cache_path):
     """Cache user data."""
@@ -79,8 +101,14 @@ def mask_key(key):
 
 def update_api_keys(api_keys_path):
     """Update existing API keys."""
-    with open(api_keys_path, 'r') as file:
-        keys = json.load(file)
+    keys = {}
+    try:
+        if os.path.getsize(api_keys_path) > 0:
+            with open(api_keys_path, 'r') as file:
+                keys = json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error reading API keys file: {e}")
+        return
     
     print("Which keys would you like to update? (leave blank to keep current value)")
     for key in keys:
@@ -100,12 +128,25 @@ def update_api_keys(api_keys_path):
                     "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
                     "grant_type": "authorization_code"
                 }
-                response = requests.post(trakt_token_url, json=payload)
-                response_data = response.json()
-                keys["Trakt Client Access Token"] = response_data.get("access_token", "")
-                # Remove sensitive information
-                keys.pop("Trakt Client Secret", None)
-                keys.pop("Trakt Authorization Code", None)
+                attempt = 0
+                while attempt < MAX_RETRIES:
+                    try:
+                        response = requests.post(trakt_token_url, json=payload)
+                        response.raise_for_status()
+                        response_data = response.json()
+                        keys["Trakt Client Access Token"] = response_data.get("access_token", "")
+                        # Remove sensitive information
+                        keys.pop("Trakt Client Secret", None)
+                        keys.pop("Trakt Authorization Code", None)
+                        break
+                    except requests.exceptions.RequestException as e:
+                        attempt += 1
+                        if attempt < MAX_RETRIES:
+                            print(f"Error exchanging Trakt Authorization Code for Access Token: {e}. Retrying in {RETRY_DELAY} seconds...")
+                            time.sleep(RETRY_DELAY)
+                        else:
+                            print(f"Failed to exchange Trakt Authorization Code after {MAX_RETRIES} attempts.")
+                            raise
         else:
             masked_key = mask_key(keys[key])
             new_value = input(f"{key} (current: {masked_key}): ").strip()
@@ -134,16 +175,24 @@ def main():
     run_check_script()
 
     if os.path.exists(api_keys_path):
-        with open(api_keys_path, 'r') as file:
-            keys = json.load(file)
-        
-        if not any(keys.values()):  # Check if all values are empty
-            print("API keys file is empty. Requesting new API keys...")
+        try:
+            if os.path.getsize(api_keys_path) > 0:
+                with open(api_keys_path, 'r') as file:
+                    keys = json.load(file)
+                
+                if not any(keys.values()):  # Check if all values are empty
+                    print("API keys file is empty. Requesting new API keys...")
+                    get_api_keys(api_keys_path)
+                else:
+                    update_choice = input("API keys already exist. Would you like to update them? (yes/no): ").strip().lower()
+                    if update_choice == 'yes':
+                        update_api_keys(api_keys_path)
+            else:
+                print("API keys file is empty. Requesting new API keys...")
+                get_api_keys(api_keys_path)
+        except json.JSONDecodeError as e:
+            print(f"Error reading API keys file: {e}")
             get_api_keys(api_keys_path)
-        else:
-            update_choice = input("API keys already exist. Would you like to update them? (yes/no): ").strip().lower()
-            if update_choice == 'yes':
-                update_api_keys(api_keys_path)
     else:
         print("API keys file does not exist. Requesting new API keys...")
         get_api_keys(api_keys_path)
@@ -160,6 +209,13 @@ def main():
         with open(rd_key_path, 'w') as file:
             json.dump({"Real-Debrid API Key": rd_key}, file, indent=4)
         print("User data fetched and saved successfully!")
+
+        # Run Run.py script
+        try:
+            subprocess.run(['python', 'Run.py'], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f'Error running Run.py: {e}')
+            exit(1)
     else:
         print("Failed to fetch user data.")
 
