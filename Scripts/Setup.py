@@ -75,34 +75,25 @@ def mask_key(key):
     return key[:6] + '*' * (len(key) - 6)
 
 def update_api_keys(api_keys_path):
-    keys = {}
-    if os.path.exists(api_keys_path) and os.path.getsize(api_keys_path) > 0:
-        with open(api_keys_path, 'r') as file:
-            try:
-                keys = json.load(file)
-            except json.JSONDecodeError:
-                print("API keys file is corrupted or invalid JSON.")
-                keys = {}
-    else:
-        print("API keys file is empty or does not exist.")
+    with open(api_keys_path, 'r') as file:
+        try:
+            keys = json.load(file)
+        except json.JSONDecodeError:
+            keys = {}
 
-    if not keys:
-        print("Please provide the API keys.")
-        keys = get_api_keys(api_keys_path)
-    else:
-        print("Which keys would you like to update? (leave blank to keep current value)")
-        for key in keys:
-            masked_key = mask_key(keys[key]) if keys[key] else 'Not Set'
-            new_value = input(f"{key} (current: {masked_key}): ").strip()
-            if new_value:
-                keys[key] = new_value
-    
+    print("Which keys would you like to update? (leave blank to keep current value)")
+    for key in keys:
+        masked_key = mask_key(keys[key])
+        new_value = input(f"{key} (current: {masked_key}): ").strip()
+        if new_value:
+            keys[key] = new_value
+
     save_api_keys(keys, api_keys_path)
 
 def main():
     # Run Check.py script
     run_check_script()
-    
+
     # Define paths relative to the script location
     script_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.dirname(script_dir)  # Go up one level to the root directory
@@ -117,19 +108,24 @@ def main():
     os.makedirs(os.path.dirname(rd_key_path), exist_ok=True)
     os.makedirs(os.path.dirname(cache_path), exist_ok=True)
 
-    # Check if the API keys file exists and is valid
     if os.path.exists(api_keys_path):
-        update_api_keys(api_keys_path)
+        with open(api_keys_path, 'r') as file:
+            if file.read().strip():  # Check if the file is not empty
+                file.seek(0)  # Reset file pointer to the beginning
+                update_choice = input("API keys already exist. Would you like to update them? (yes/no): ").strip().lower()
+                if update_choice == 'yes':
+                    update_api_keys(api_keys_path)
+            else:
+                get_api_keys(api_keys_path)
     else:
         get_api_keys(api_keys_path)
 
-    # Proceed with fetching and processing user data
     with open(api_keys_path, 'r') as file:
         keys = json.load(file)
-    
+
     rd_key = keys.get("Real-Debrid API Key")
     user_data = fetch_user_data(rd_key)
-    
+
     if user_data:
         cache_data(user_data, cache_path)
         read_pkl_and_save_json(cache_path, profile_path)
