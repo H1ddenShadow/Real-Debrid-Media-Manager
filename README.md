@@ -19,7 +19,7 @@ Follow these steps to set up the project locally:
 
     ```bash
     git clone https://github.com/H1ddenShadow/Real-Debrid-Media-Manager.git
-    ```
+     ```
 or
     ```bash
     Install 'Initialize.py' and run: python Initialize.py.
@@ -43,75 +43,72 @@ Provide examples and instructions for using your project. Include code snippets,
 
 ```bash
 python your_script.py --option value
-## Features
-
-- List of key features or functionalities of your project.
-- Explain how they benefit the user.
-## Contributing
-
+Features
+List of key features or functionalities of your project.
+Explain how they benefit the user.
+Contributing
 We welcome contributions to this project! To contribute, follow these guidelines:
 
-1. **Fork the repository**
-    1.1. Navigate to the repository you wish to contribute to, 'Real Debrid Media Manager', on 'GitHub' and in the top-right corner of the repositorey page click the 'Fork' button.  A copy of the repsoitory should be created on your 'GitHub' account.
-    1.2. Head to your 'GitHub' account and find the forked repository.
-    1.3. Copy the url by clicking the 'Code' button and selecting the respective 'Copy' button.
-    1.4. Open your terminal and run the following command:
+Fork the repository
 
-```bash
+1.1. Navigate to the repository you wish to contribute to, 'Real Debrid Media Manager', on GitHub and click the 'Fork' button in the top-right corner. A copy of the repository will be created on your GitHub account.
+
+1.2. Go to your GitHub account and find the forked repository.
+
+1.3. Copy the URL by clicking the 'Code' button and selecting 'Copy'.
+
+1.4. Open your terminal and run the following command:
+
+bash
+Copy code
 git clone <URL>
-```
+Create a new branch:
 
+2.1. Navigate to your cloned repository:
 
-2. **Create a new branch:**
-    2.1. Navigate to your cloned repsitory:
-```
-cd <Repository-name>
-```
-    2.2. Create a new branch for your changes:
-```
+bash
+Copy code
+cd Real-Debrid-Media-Manager
+2.2. Create a new branch for your changes:
+
+bash
+Copy code
 git checkout -b <branch-name>
-```
-Note: Please use a descriptive name for your branch.
-    ```bash
-    git checkout -b feature/your-feature
-    ```
+Note: Use a descriptive name for your branch, e.g., feature/your-feature.
 
-3. **Make your changes**
-    3.1. Open the project in your preferred code editor and make the necessary changes as required.
+Make your changes:
 
-4. **Commit your changes:**
-    4.1. Add your changes to the staging area:
+Open the project in your preferred code editor and make the necessary changes.
 
+Commit your changes:
+
+4.1. Add your changes to the staging area:
+
+bash
+Copy code
 git add .
+4.2. Commit the changes with a descriptive message:
 
-    4.2. Commit the changes whilst making use of a discriptive message for the feature in question:
+bash
+Copy code
+git commit -m "Description of feature"
+Push to the branch:
 
-    ```bash
-    git commit -m "Description of feature"
-    ```
+bash
+Copy code
+git push origin <branch-name>
+Open a Pull Request
 
-5. **Push to the branch:**
+6.1. Go to the original GitHub repository.
 
-    ```bash
-    git push origin <branch-name>
-    ```
+6.2. Click on the 'Pull Requests' tab, then click on 'New Pull Request'.
 
-6. **Open a Pull Request**
-    6.1. Head to the original 'GitHub' repository.
-    6.2. Click on the 'Pull Requests' tab, then proceed to click on the 'Create Pull Request' button.
-    6.3. Once this is done, select the branch you pushed your changes to and compare it with the original main branch.
-    6.4. Click on 'Create Pull Request' and provide a descriptive title and message detailing your changes.
-    6.5. Submit the pull request.
+6.3. Select the branch you pushed your changes to and compare it with the main branch.
 
-Please make sure your changes adhere to the project's coding standards and pass all tests.
-## License
+6.4. Click 'Create Pull Request' and provide a descriptive title and message detailing your changes.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-## Contact
+6.5. Submit the pull request.
 
-For questions or feedback, please contact:
-
-- **Author:** [Your Name](https://github.com/yourusername)
-- **Email:** your.email@example.com
+Please ensure your changes adhere to the project's coding standards and pass all tests.
 
 You can also find more information and updates on the project's [website](https://your-project-website.com) if applicable.
