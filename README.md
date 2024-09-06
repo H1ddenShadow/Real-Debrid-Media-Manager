@@ -2,7 +2,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/badge/version-1.0-blue)
 ## Description
 
-A brief description of what your project does, its purpose, and any key features. Explain why this project is useful and what problem it solves.
+'Real Debrid Media Manager' is a project created with the intention of streamlining the process of syncing a users 'Trakt' data with their 'Real-Debrid' account and although such scripts and websites already exist, they pose the issue of not supporting 'Trakt' and instead do so for other services: 'IMDB'. 
 ## Table of Contents
 
 1. [Installation](#installation)
@@ -18,7 +18,11 @@ Follow these steps to set up the project locally:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/your-repo.git
+    git clone https://github.com/H1ddenShadow/Real-Debrid-Media-Manager.git
+    ```
+
+    ```bash
+    install 'Initialize.py' and run: python Initialize.py.
     ```
 
 2. **Navigate to the project directory:**
@@ -30,7 +34,7 @@ Follow these steps to set up the project locally:
 3. **Install dependencies:**
 
     ```bash
-    pip install -r requirements.txt
+    python Setup.py
     ```
 
     or if you are using another package manager, provide the appropriate command.
