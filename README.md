@@ -110,7 +110,7 @@ Please make sure your changes adhere to the project's coding standards and pass 
 
 ## License
 
-This project is licensed under the MIT License - see the [![MIT License][license-shield]][license-url] file for details.
+This project is licensed under the MIT License - see the [![MIT License][license-shield]][https://github.com/H1ddenShadow/Real-Debrid-Media-Manager/blob/main/LICENSE] file for details.
 
 ## Contact
 
