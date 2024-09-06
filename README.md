@@ -50,25 +50,60 @@ python your_script.py --option value
 We welcome contributions to this project! To contribute, follow these guidelines:
 
 1. **Fork the repository**
-2. **Create a new branch:**
+   1.1. Fork the repository by navigating to the repository's 'GitHub'.
+   1.2. Click the 'Fork' button in the top-right of the repository's page, this will create a copy of the repository on your 'GitHub' account.
+2. **Clone the repository**
+   2.1. Go to your 'GitHub' account and find the forked repository.
+   2.2. Click the 'Code' button and copy the URL from it's respective field.
+   2.3. Open your terminal and run the following command:
 
+   ```bash
+   git clone <URL>
+   ```
+   Please be sure to replace the **<URL>** field with the actual url ypu copied.
+3. **Create a new branch:**
+   3.1. Navigate to your cloned repository on your local machine:
+   
+   ```
+   cd <Repository-name>
+   ```
+   Please be sure to replace **<Repository-name** with the actual directory path you saved the repistory in.
+   3.2. Create a new branch for your proposed changes:
+   
     ```bash
-    git checkout -b feature/your-feature
+    git checkout -b <branch-name>
+    ```
+    Please replace **<branch-name>** with the actual name of ypur proposed feature.
+
+5. **Make your changes**
+   4.1. Open the project in your preferred code editor.
+   4.2. Adjust and add to to the code as necessary.
+6. **Commit your changes:**
+   5.1. Add your changes to the staging area:
+    ```bash
+    git add .
+    ```
+   5.2. Commit your changes and include a descriptive message of your added feature/s.
+    ```bash
+    git commit -m "Description of feature"
     ```
 
-3. **Make your changes**
-4. **Commit your changes:**
-
+7. **Push to the branch:**
+   6.1. Head on over to the forked repository, on 'GitHub', and push your changes.
     ```bash
-    git commit -m "Add new feature"
+    git push origin <bran-name>
     ```
+Please be sure to replace **<branch-name>** with the appropriate name of the branch that you created.
 
-5. **Push to the branch:**
+7. **Open a Pull Request**
+   7.1. Head to the original 'GitHUb' repository and click on the 'Pull Requests' tab whereafter you should then click the 'New Pull Request' button.
+   7.2. Select the branch you pushed your changes to and compare it with the original repository's main branch.
+   7.3. Click 'Create Pull Request' and provide a descriptive title as well as a detaild description of your proposed feature.
+   7.4. Finally, submit your pull request.
 
-    ```bash
-    git push origin feature/your-feature
-    ```
-
-6. **Open a Pull Request**
-
+8. **Feedback**
+   8.1. Your pull request will be reviewed and checked by the project mainter/s.
+   8.2. Be on stand-by to make any additional and required changes.
+   8.3. Upon approval, your changes will be merged into the main branch.
+    
 Please make sure your changes adhere to the project's coding standards and pass all tests.
