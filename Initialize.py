@@ -250,10 +250,15 @@ def clone_repository(progress_var):
                 repo_dir_path = os.path.join(clone_path, repo_dir_name)
                 if os.path.exists(repo_dir_path):
                     shutil.move(repo_dir_path, final_clone_path)
-            
-            messagebox.showinfo("Success", "Repository cloned successfully!")
+
+            # Delete the Initialize.py file if it exists
+            initialize_file_path = os.path.join(final_clone_path, 'Initialize.py')
+            if os.path.exists(initialize_file_path):
+                os.remove(initialize_file_path)
+
+            messagebox.showinfo("Success", "Repository cloned and Initialize.py deleted successfully!")
         except Exception as e:
-            messagebox.showerror("Error", f"Failed to clone repository: {e}")
+            messagebox.showerror("Error", f"Failed to clone repository or delete file: {e}")
         finally:
             progress_bar.pack_forget()  # Hide the progress bar after completion
 
