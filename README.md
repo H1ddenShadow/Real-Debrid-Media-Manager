@@ -1,5 +1,5 @@
 # Real Debrid Media Manager
-![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/badge/version-1.0-blue) ![Language](https://img.shields.io/badge/language-Python-blue)
+![License](https://img.shields.io/badge/license-MIT-green)(https://github.com/H1ddenShadow/Real-Debrid-Media-Manager/blob/main/LICENSE) ![Version](https://img.shields.io/badge/version-1.0-blue) ![Language](https://img.shields.io/badge/language-Python-blue)
 ## Description
 
 'Real Debrid Media Manager' is a project created with the intention of streamlining the process of syncing a users 'Trakt' data with their 'Real-Debrid' account and although such scripts and websites already exist, they pose the issue of not supporting 'Trakt' and instead do so for other services: 'IMDB'. 
