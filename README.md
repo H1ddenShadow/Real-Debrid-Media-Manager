@@ -34,6 +34,7 @@ Follow these steps to set up the project locally:
     ```bash
     python Setup.py
     ```
+**Note**: Users who make use of the 'git clone' option will have to rename the created folder to 'Real Debrid Media Manager' so as to avoid any future issues.
 
 ## Usage
 
@@ -44,6 +45,11 @@ Provide examples and instructions for using your project. Include code snippets,
 2. python Setup.py
 3. python Run.py or Start.py (if you want to begin continues running).
 ```
+## Features
+
+1. Connect to and retrive a users 'Trakt Watchlist and Favourotes' data.
+2. Create magnet links for said media.
+3. Add the respective links to the users 'Real-Debrid' accoumt.
 
 ## Contributing
 
