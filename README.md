@@ -1,6 +1,5 @@
 # Real Debrid Media Manager
 ![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/badge/version-1.0-blue)
-* [![Vue][Vue.js]][Vue-url]
 ## Description
 
 'Real Debrid Media Manager' is a project created with the intention of streamlining the process of syncing a users 'Trakt' data with their 'Real-Debrid' account and although such scripts and websites already exist, they pose the issue of not supporting 'Trakt' and instead do so for other services: 'IMDB'. 
@@ -80,9 +79,9 @@ Note: Please use a descriptive name for your branch.
 
 4. **Commit your changes:**
     4.1. Add your changes to the staging area:
-```
+
 git add .
-```
+
     4.2. Commit the changes whilst making use of a discriptive message for the feature in question:
 
     ```bash
