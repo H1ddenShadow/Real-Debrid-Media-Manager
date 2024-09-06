@@ -96,8 +96,8 @@ We welcome contributions to this project! To contribute, follow these guidelines
 Please be sure to replace **<branch-name>** with the appropriate name of the branch that you created.
 
 7. **Open a Pull Request**
-   7.1. Head to the original 'GitHUb' repository and click on the 'Pull Requests' tab whereafter you should then click the 'New Pull Request' button.
-   7.2. Select the branch you pushed your changes to and compare it with the original repository's main branch.
+   * 7.1. Head to the original 'GitHUb' repository and click on the 'Pull Requests' tab whereafter you should then click the 'New Pull Request' button.
+   * 7.2. Select the branch you pushed your changes to and compare it with the original repository's main branch.
    7.3. Click 'Create Pull Request' and provide a descriptive title as well as a detaild description of your proposed feature.
    7.4. Finally, submit your pull request.
 
