@@ -47,7 +47,7 @@ Provide examples and instructions for using your project. Include code snippets,
 ```
 ## Features
 
-1. Connect to and retrive a users 'Trakt Watchlist and Favourotes' data.
+1. Connect to and retrive a users 'Trakt': 'Watchlist' and' Favourites' data.
 2. Create magnet links for said media.
 3. Add the respective links to the users 'Real-Debrid' accoumt.
 
