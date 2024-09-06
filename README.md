@@ -43,7 +43,7 @@ Provide examples and instructions for using your project. Include code snippets,
 
 ```bash
 python your_script.py --option value
-
+```
 
 ## Contributing
 
