@@ -19,6 +19,8 @@ Follow these steps to set up the project locally:
 
     ```bash
     git clone https://github.com/H1ddenShadow/Real-Debrid-Media-Manager.git
+                            or
+     Install 'Initialize.py' and run: python Initialize.py.
      ```
 or
     ```bash
@@ -42,7 +44,9 @@ or
 Provide examples and instructions for using your project. Include code snippets, commands, or screenshots as necessary.
 
 ```bash
-python your_script.py --option value
+1. python Initialize.py.
+2. python Setup.py
+3. python Run.py or Start.py (if you want to begin continues running).
 ```
 
 ## Contributing
