@@ -57,7 +57,9 @@ We welcome contributions to this project! To contribute, follow these guidelines
     1.3. Copy the url by clicking the 'Code' button and selecting the respective 'Copy' button.
     1.4. Open your terminal and run the following command:
 ```
+```
 git clone <URL>
+```
 ```
 
 2. **Create a new branch:**
