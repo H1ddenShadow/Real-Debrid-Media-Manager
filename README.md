@@ -107,14 +107,8 @@ Please be sure to replace **<branch-name>** with the appropriate name of the bra
    8.3. Upon approval, your changes will be merged into the main branch.
     
 Please make sure your changes adhere to the project's coding standards and pass all tests.
-Fruit
-  1. Apple
-  2. Banana
-    2.1. Cavendish
-    2.2. Plantain
 
-Dairy
-  Milk
-  • Cheese
-    • Cheddar
-    • Mozzarella
+ Markup : 1. A numbered list
+              1. A nested numbered list
+              2. Which is numbered
+          2. Which is numbered
