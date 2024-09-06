@@ -110,7 +110,7 @@ Please make sure your changes adhere to the project's coding standards and pass 
 
 ## License
 
-This project is licensed under the MIT License - see the [![MIT License][license-shield]][license-url] file for details.
+This project is licensed under the MIT License - see the [![MIT License](https://img.shields.io/badge/license-MIT-green)](LICENSE) file for details.
 
 ## Contact
 
