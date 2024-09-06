@@ -223,6 +223,10 @@ def show_tutorial():
 def clone_repository(progress_var):
     repo_path = filedialog.askdirectory()
     if repo_path:
+        # Note the name of the current directory
+        current_directory = os.getcwd()
+        original_folder_name = os.path.basename(repo_path)
+        
         # Determine the final clone path
         final_clone_path = os.path.join(repo_path, "Real Debrid Media Manager")
         
@@ -243,18 +247,17 @@ def clone_repository(progress_var):
 
             # Clone the repository
             repo = git.Repo.clone_from(REPO_URL, clone_path, progress=progress_callback(progress_var))
-            
-            # Rename the directory if cloning into an empty directory
-            if clone_path != repo_path:
-                repo_dir_name = os.path.basename(REPO_URL).replace(".git", "")
-                repo_dir_path = os.path.join(clone_path, repo_dir_name)
-                if os.path.exists(repo_dir_path):
-                    shutil.move(repo_dir_path, final_clone_path)
 
-            # Delete the Initialize.py file if it exists
-            initialize_file_path = os.path.join(final_clone_path, 'Initialize.py')
+            # Check if Initialize.py file exists and delete it if necessary
+            initialize_file_path = os.path.join(clone_path, 'Initialize.py')
             if os.path.exists(initialize_file_path):
                 os.remove(initialize_file_path)
+
+            # Rename the folder if it was empty initially
+            if not os.listdir(repo_path):  # Check if the directory is empty
+                parent_path = os.path.dirname(repo_path)
+                new_path = os.path.join(parent_path, "Real Debrid Media Manager")
+                os.rename(repo_path, new_path)
 
             messagebox.showinfo("Success", "Repository cloned and Initialize.py deleted successfully!")
         except Exception as e:
