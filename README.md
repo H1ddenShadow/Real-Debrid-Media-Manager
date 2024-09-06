@@ -17,11 +17,11 @@ Follow these steps to set up the project locally:
 
 1. **Clone the repository:**
 
-    * ```bash
+    ```bash
     git clone https://github.com/H1ddenShadow/Real-Debrid-Media-Manager.git
     ```
 or
-    * ```bash
+    ```bash
     Install 'Initialize.py' and run: python Initialize.py.
     ```
 
@@ -56,11 +56,11 @@ We welcome contributions to this project! To contribute, follow these guidelines
     1.2. Head to your 'GitHub' account and find the forked repository.
     1.3. Copy the url by clicking the 'Code' button and selecting the respective 'Copy' button.
     1.4. Open your terminal and run the following command:
-```
-```
+
+```bash
 git clone <URL>
 ```
-```
+
 
 2. **Create a new branch:**
     2.1. Navigate to your cloned repsitory:
