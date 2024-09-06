@@ -107,3 +107,19 @@ Please be sure to replace **<branch-name>** with the appropriate name of the bra
    * 8.3. Upon approval, your changes will be merged into the main branch.
     
 Please make sure your changes adhere to the project's coding standards and pass all tests.
+
+## License
+
+This project is licensed under the MIT License - see the [![MIT License][license-shield]][license-url] file for details.
+
+## Contact
+
+For questions or feedback, please contact:
+
+- **Author:** [Your Name](https://github.com/yourusername)
+- **Email:** your.email@example.com
+
+## Acknowledgments
+
+- **Libraries and tools** used in the project.
+- **Inspiration** or resources that helped in the development of the project.
