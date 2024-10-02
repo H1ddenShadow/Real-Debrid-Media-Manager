@@ -59,7 +59,7 @@ FAQ Section:
 
 9. How do I contribute to the project?
   - The 'Real Debrid Media Manager' project is open-source and licensed underneath the 'MIT License' so users may feel free to edit and contribute to the project so long as the proper and required credit is given to the original creator of said project as well as the original license, copyright notice and permissions notice, is included.
-  - Users may refrence the 'Contributing' section of the projects main 'GitHub' page to figure out just how to contibute to the project.	  
+  - Users may refrence the 'Contributing' section on the projects main 'GitHub' page to figure out just how to contibute to the project.	  
 	  
 TUTORIAL_CONTENT = """
 Tutorial Section:
