@@ -31,49 +31,49 @@ install_packages()
 FAQ_CONTENT = """
 FAQ Section:
 1. How do I clone the repository?
-   - Users may clone the repository by running the 'Initialize.py' script in their terminal and then selecting the 'Clone Repository' whereafter they are to follow the steps accordingly.
+   - You may clone the repository by running the 'Initialize.py' script in your terminal and then selecting the 'Clone Repository', whereafter, the steps are to be followed accordingly.
 
 2. How do I download the folders?
-   - On the 'GitHub' page, click the green 'Code' button which appears towards the top-right of a users screen and there, there should be a 'Download Zip' option which should allow users to download the folders and their data in a zip file. .
+   - On the '[GitHub](https://github.com/H1ddenShadow/Real-Debrid-Media-Manager)' page, click the green 'Code' button which appears towards the top-right of a users screen and there, there should be a 'Download Zip' option which should allow users to download the necessary folders and their data in a zip file.
 
 3. Where can I get help?
    - Visit the GitHub repository's issues section or contact support.
 
 4. How do I retrieve my Api Keys?
-   - Users who wish to retrieve their api keys may refrence the respective services' guides on how to retrieve your api keys.
+   - Users who wish to retrieve their api keys may refrence the respective services' guide on how to retrieve your api keys.
    - Once retrieved, users may run the 'Setup.py' script to save said keys.
 
 5. How does this script work?
-   - The script works by utilizing various endpoints to connect to a users 'Trakt' account, retrieve their list data, 'Watchlist' and 'Favourites', and fetch the magnet counterparts of said media before adding it to their 'Real-Debrid' account.
+   - The script works by utilizing various endpoints to connect to a users 'Trakt' account, retrieve their lists data: 'Watchlist' and 'Favourites', and fetch the magnet counterparts of said media before adding it to their 'Real-Debrid' account.
 
 6. Why am I facing errors with the 'Scheduled Runs' times as well as the relevant time fields not being updated?
-  - The times present in the 'Schedule.py' script are merely default vaules and adjusting the values from there, after already having run the script, will lead to the changes being reflected unless the user: deletes the created 'scheduled_runs.json' file and stops the script, so users who wish to make changes to the times are suggested to either do so:
- 
-  1. Before running the respective script, initially (the first time) or
-  2. By running the 'Stop.py' script and then editing the times in the 'scheduled_runs.json' file, which can be found in the 'Scheduled Runs' folder.
+  - The times present in the 'Schedule.py' script are merely default vaules and adjusting the values from the script itself, after already having run said script, will lead to the changes not being reflected unless the user: deletes the created 'scheduled_runs.json' file and stops the script. Users who wish to make changes to the times are suggested to either do so before running the respective script, initially (the first time) or by running the 'Stop.py' script and then editing the times in the 'scheduled_runs.json' file, which can be found in the 'Scheduled Runs' folder.
 
 7. How do I run or start the script?
-  - Users are provided with two options in terms of running the script, where they could either: run the script once, 'Run.py', or keep it running continuously, 'Start.py'; in the event that they wish to stop running the script, they may then run the following script: 'Stop.py' and should they wish to disable the script completetly, they may then update the 'enabled' field in the 'scheduled_runs.json' file to reflect the 'false' setting.
+  - Users are provided with two options in terms of running the script. They could either run the script once: 'Run.py' or keep it running continuously: 'Start.py'; in the event that they wish to stop running the script, they may then run the following script: 'Stop.py' and should they wish to disable the script completetly, they may then update the 'enabled' field in the 'scheduled_runs.json' file to reflect the 'false' setting.
 """
+
+8. Why aren't series and anime not yet supported?
+  - Although there exists a scraper for series, it has proven quite rather difficult when filtering for the necessary qualities in mind and more than that, 'Real-Debrid' has imposed a bandwith limit and since this type of media tends to have a lot of data, it leads to an increase in the time taken to run the script and not only that, but said bandwith limit is bound to be hit sometime soon so it's best that only movies are made the main focus as of now.
+  - There is support for anime, however, that is only extended for movies and not tv shows and with there being little to no endpoints for such media it makes it difficult to find any shows and any websites that house such media are hard to scrape as they either have preventetive measures or they offer multiple entries for one type of media thus making scraping and filtering more difficult.
 
 TUTORIAL_CONTENT = """
 Tutorial Section:
 1. Getting Started.
-   - Install the 'Initialize.py' script and run it in your terminal, alternatively, the necessary folders may be downloaded from 'https://github.com/H1ddenShadow/Real-Debrid-Media-Manager.git' and the 'Setup.py' script, found in the 'Scripts' folder, ran; it's highly suggested that users make use of the former script mentioned earlier and those who wish to make use of the latter option must rename the unzipped folder to 'Real Debrid Media Manager'.
-
-Note: Users who choose to download the folders in a zip file from the 'GitHub' repository must rename the unzipped folder to 'Real Debrid Media Manager' or else this will cause issues with the program.
+   - Install the 'Initialize.py' script and run it in your terminal, alternatively, the necessary folders may be downloaded from '[https://github.com/H1ddenShadow/Real-Debrid-Media-Manager.git](https://github.com/H1ddenShadow/Real-Debrid-Media-Manager.git)' and the 'Setup.py' script, found in the 'Scripts' folder, should be ran; it's highly suggested that users make use of the former script whilst those who wish to make use of the latter option must rename the unzipped folder to 'Real Debrid Media Manager'.
 
 2. Cloning a Repository.
-   - Select the 'Clone Repository' option after running the script and in the now opened window, select your preferred directoty..
-   - Wait for the cloning process to complete; the relevant progress will be shown on the screen.
-Note: ALthough a 'renaming' feature is present, it does not work as expected so it's rather suggested that users clone the repository in a non-empty directory (folder) so as to avoid issues when the program runs.
+   - Select the 'Clone Repository' option after running the script and in the now opened window, select your preferred directoty.
+   - Wait for the cloning process to complete; the relevant progress will be shown on-screen.
+
+Note: Although a 'renaming' feature is present, it's required that there exists no other folder which shares the same name as 'Real Debrid Media Manager'.
 
 3. Retrieving a users Api Keys.
    - Trakt:
-	- Users must create a 'Trakt' account, if not already existent, wherafter, they should head to the 'Settings' tab which should be found under their name/profile tab.
+	- Users must create a 'Trakt' account, if not already existent, wherafter, they should head to the 'Settings' tab which can be found under their name/profile tab.
 	- There, they should then find a 'Your API Apps' tab and select the 'New Application' option.
-	- In the 'Name' field, a name of the users choosing must be used, whereafter, they must paste the second uri, 'urn:ietf:wg:oauth:2.0:oob', in the 'Redirect uri' field and lastly check both the available options for the 'Permissions' field.
-	- Clicking on the 'Save App' button should allow users to create the app in question.
+	- In the 'Name' field, a name of the users choosing must be used, whereafter, they must paste the second uri, 'urn:ietf:wg:oauth:2.0:oob', in the 'Redirect uri' field and lastly check both the available options underneath the 'Permissions' field.
+	- Clicking on the 'Save App' button should then allow users to create the app in question.
 	- Users are to then note the 'Client ID' and 'Secret' of said app.
    - Authorization Code:
 	- The 'Trakt Authorization Code' may be retrieved by clicking the 'Authorize' button under the 'Redirect URI:' field and should be noted as it'll be used later on in the program. 
@@ -83,18 +83,15 @@ Note: ALthough a 'renaming' feature is present, it does not work as expected so 
 	- Users should then head to the respective API page to retrieve their API Key.
 
    - TMDB:
-	- A 'TMDB' account is not necessary but could, however, be utilized in future for logging purposes.
-	- For convience, users may find their API Key by heading to the documentaion page and selecting 'Get API Key'.
+	- A 'TMDB' account is optional but will be esential for logging purposes.
+	- For convience, users may find their API Key by heading to 'TMDB's' documentaion page and selecting 'Get API Key'.
 
 4. Setting up the program.
-   - Users may run the 'Setup.py' script which can be found in the 'Scripts' folder.
-   - In the requested fields, users should paste in the respecive keys and those being their: 'Client ID', 'Client Secret', 'Authorization Code', 'Real-Debrid API Key' and 'TMDB API Key'. 
-
-   - Retrieving the 'Authorization Code':
-	- Users may retrieve their 'Trakt Authorization Code' by clicking the 'Authorize' button under the 'Redirect URI:' field.
+   - Users may run the 'Setup.py' script which may be found in the 'Scripts' folder.
+   - In the requested fields, users should then paste in the respecive keys; being their: 'Client ID', 'Client Secret', 'Authorization Code', 'Real-Debrid API Key' and 'TMDB API Key'. 
    - Lastly, users may then run the 'Run.py' script to run the script once or the 'Start.py' script to begin continous running.
 
-Note: The default values will ensure that the script is ran in the early morning, afternoon and evening: 08:00, 12:00 and 18:00, respectively before running off and starting back up the following day. Any changes that the user hopes to make may be made to the 'Schedule.py' file before either the 'Run.py' or 'Start.py' scripts are ran, although it's highly suggested that the former script is ran to create the necessary file with the default values, whereafter users may feel free to edit the times in said file. The 'Stop.py' should be ran before any changes may be made to the file, and of course, this being if the user has opted to run the latter script; this being done to avoid any issues with the script reading or utilizing the wrong times. Lastly, it should be noted that the last available time should have no comma after the qoutations: (""), for example:
+Note: The default values will ensure that the script is ran in the early morning, afternoon and evening: 08:00, 12:00 and 18:00, respectively before running off and starting back up the following day. Any changes that the user hopes to make may be made to the 'Schedule.py' file before either the 'Run.py' or 'Start.py' scripts are ran, although it's highly suggested that the former script is ran to create the necessary file with the default values, whereafter users may then feel free to edit the times in said file. The 'Stop.py' should be ran before any changes may be made to the file, and of course, this being if the user has opted to run the latter script (Start.py); this being done to avoid any issues with the script reading or utilizing the wrong times. Lastly, it should be noted that the last available time should have no comma after the qoutations: (""), for example:
 "17:00", 
 "18:00", 
 "20:00"
