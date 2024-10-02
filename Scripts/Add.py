@@ -26,6 +26,9 @@ def add_magnet_to_rd(api_key, magnet_link):
     }
     try:
         response = requests.post(url, headers=headers, data=data)
+        if response.status_code == 509:
+            print("Bandwidth limit exceeded. Please try again later.")
+            return None
         response.raise_for_status()
         return response.json().get('id')
     except requests.exceptions.RequestException as e:
@@ -39,6 +42,9 @@ def get_file_ids(api_key, torrent_id):
     }
     try:
         response = requests.get(url, headers=headers)
+        if response.status_code == 509:
+            print("Bandwidth limit exceeded. Please try again later.")
+            return None
         response.raise_for_status()
         files = response.json().get('files', [])
         file_ids = [str(file['id']) for file in files]
@@ -57,6 +63,9 @@ def select_files_and_start_torrent(api_key, torrent_id, file_ids):
     }
     try:
         response = requests.post(url, headers=headers, data=data)
+        if response.status_code == 509:
+            print("Bandwidth limit exceeded. Please try again later.")
+            return None
         response.raise_for_status()
         return response.status_code == 204
     except requests.exceptions.RequestException as e:
