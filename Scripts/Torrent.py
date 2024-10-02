@@ -2,11 +2,17 @@ import os
 import pickle
 import requests
 import json
+import re
 from datetime import datetime
 
 def load_cached_data(file_path):
-    with open(file_path, 'rb') as file:
-        return pickle.load(file)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as file:
+            if file_path.endswith('.pkl'):
+                return pickle.load(file)
+            elif file_path.endswith('.json'):
+                return json.load(file)
+    return []
 
 def fetch_yts_movie(title, year):
     url = f"https://yts.mx/api/v2/list_movies.json?query_term={title}&year={year}"
@@ -39,27 +45,35 @@ def cache_data(data, cache_path):
     with open(cache_path, 'wb') as file:
         pickle.dump(data, file)
 
-def log_not_found(log_path, title, year, reason):
-    with open(log_path, 'a') as log_file:
-        log_file.write(f"{title} ({year}) - {reason}\n")
+def log_not_found(log_data, title, year, reason):
+    entry = {'title': title, 'year': year, 'reason': reason}
+    if entry not in log_data:
+        log_data.append(entry)
 
 def extract_movie_info(item):
+    title, year = None, None
     if item['type'] == 'movie':
         title = item['movie'].get('title')
         year = item['movie'].get('year')
     elif item['type'] == 'episode':
         title = item['episode'].get('title')
         year = item['episode']['ids'].get('tmdb')  # Using tmdb id as a placeholder for year
-    else:
-        title = None
-        year = None
+    
+    # Use regex to clean and extract title and year if necessary
+    if title:
+        title_match = re.match(r"^(.*?)(?:\s+\((\d{4})\))?$", title)
+        if title_match:
+            title = title_match.group(1).strip()
+            if not year and title_match.group(2):
+                year = title_match.group(2)
+    
     return title, year
 
 def main():
     base_path = os.path.dirname(os.path.abspath(__file__))
     cached_data_path = os.path.join(base_path, '..', 'Cached Data')
     media_path = os.path.join(base_path, '..', 'Media')
-    log_path = os.path.join(base_path, '..', 'Logs', 'not_found.log')
+    log_path = os.path.join(base_path, '..', 'Logs', 'not_found.json')
 
     watchlist_path = os.path.join(cached_data_path, 'watchlist.pkl')
     favourites_path = os.path.join(cached_data_path, 'favourites.pkl')
@@ -71,7 +85,7 @@ def main():
     all_movies = sorted(all_movies, key=lambda x: x.get('movie', {}).get('title', ''))
 
     retrieved_data = []
-    not_found = []
+    not_found = load_cached_data(log_path)
 
     for item in all_movies:
         title, year = extract_movie_info(item)
@@ -91,29 +105,14 @@ def main():
                         'quality': best_torrent['quality']
                     })
                 else:
-                    not_found.append({
-                        'title': title,
-                        'year': year,
-                        'reason': 'No suitable torrent found on YTS'
-                    })
-                    log_not_found(log_path, title, year, 'No suitable torrent found on YTS')
+                    log_not_found(not_found, title, year, 'No suitable torrent found on YTS')
             else:
-                not_found.append({
-                    'title': title,
-                    'year': year,
-                    'reason': 'Not found on YTS'
-                })
-                log_not_found(log_path, title, year, 'Not found on YTS')
+                log_not_found(not_found, title, year, 'Not found on YTS')
         else:
-            not_found.append({
-                'title': title if title else 'Unknown',
-                'year': year if year else 'Unknown',
-                'reason': 'Missing title or year'
-            })
-            log_not_found(log_path, title if title else 'Unknown', year if year else 'Unknown', 'Missing title or year')
+            log_not_found(not_found, title if title else 'Unknown', year if year else 'Unknown', 'Missing title or year')
 
     save_json(retrieved_data, os.path.join(media_path, 'retrieved_data.json'))
-    save_json(not_found, os.path.join(media_path, 'not_found.json'))
+    save_json(not_found, log_path)
     cache_data(retrieved_data, os.path.join(cached_data_path, 'retrieved_data.pkl'))
     cache_data(not_found, os.path.join(cached_data_path, 'not_found.pkl'))
 
