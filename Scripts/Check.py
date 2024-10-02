@@ -3,21 +3,31 @@ import subprocess
 import sys
 
 # Function to check if a module is installed
-def check_and_install(module_name):
+def check_module(module_name):
     try:
         __import__(module_name)
+        return True
     except ImportError:
+        return False
+
+# Function to check and install a module if not installed
+def check_and_install(module_name):
+    if not check_module(module_name):
         print(f"{module_name} not found. Installing...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", module_name])
+        return False
+    return True
 
 # Check for third-party modules
-check_and_install('ttkbootstrap')
+modules_to_check = ['ttkbootstrap']
+all_modules_exist = all(check_and_install(module) for module in modules_to_check)
 
-# Now you can safely import the modules
-import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
-import threading
-import ttkbootstrap as tb
+# Now you can safely import the modules if they exist
+if all_modules_exist:
+    import tkinter as tk
+    from tkinter import ttk, filedialog, messagebox
+    import threading
+    import ttkbootstrap as tb
 
 # Define the base directory (should be run from within the 'Scripts' folder)
 base_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -52,10 +62,18 @@ def create_directories(base_path, folders):
         existing_directories = [folder for folder in folders if folder not in created_directories]
         if existing_directories:
             print(f"All other directories already exist: {', '.join(existing_directories)}")
+    return all_exist
 
 def main():
     # Create sub-folders relative to the base directory
-    create_directories(base_directory, sub_folders)
+    all_directories_exist = create_directories(base_directory, sub_folders)
+    if all_modules_exist and all_directories_exist:
+        print("All necessary directories and modules are already existent.")
+    else:
+        if not all_modules_exist:
+            print("Some modules were missing and have been installed.")
+        if not all_directories_exist:
+            print("Some directories were missing and have been created.")
 
 if __name__ == "__main__":
     main()
