@@ -97,7 +97,7 @@ We welcome contributions to this project! To contribute, follow these guidelines
 6. **Push to the branch:**
    * 6.1. Head on over to the forked repository, on 'GitHub', and push your changes.
     ```bash
-    git push origin <bran-name>
+    git push origin <branch-name>
     ```
 Please be sure to replace **<branch-name>** with the appropriate name of the branch that you created.
 
