@@ -26,13 +26,13 @@ Follow these steps to set up the project locally:
 2. **Navigate to the project directory:**
 
     ```bash
-    cd your-repo
+    cd project-directory
     ```
 
 3. **Install dependencies:**
 
     ```bash
-    python Setup.py
+    Run: 'python Setup.py'
     ```
 **Note**: Users who make use of the 'git clone' option will have to rename the created folder to 'Real Debrid Media Manager' so as to avoid any future issues.
 
