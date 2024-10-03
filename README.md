@@ -47,9 +47,9 @@ Provide examples and instructions for using your project. Include code snippets,
 ```
 ## Features
 
-1. Connect to and retrive a users 'Trakt': 'Watchlist' and 'Favourites' data.
+1. Connect to and retrieve a users 'Trakt': 'Watchlist' and 'Favourites' data.
 2. Create magnet links for said media.
-3. Add the respective links to the users 'Real-Debrid' accoumt.
+3. Add the respective links to the users 'Real-Debrid' account.
 
 ## Contributing
 
@@ -66,28 +66,28 @@ We welcome contributions to this project! To contribute, follow these guidelines
    ```bash
    git clone <URL>
    ```
-   Please be sure to replace the **<URL>** field with the actual url ypu copied.
+   Please be sure to replace the **<URL>** field with the actual URL you copied.
 3. **Create a new branch:**
    * 3.1. Navigate to your cloned repository on your local machine:
    
    ```
    cd <Repository-name>
    ```
-   Please be sure to replace **<Repository-name** with the actual directory path you saved the repistory in.
+   Please be sure to replace **<Repository-name>** with the actual directory path you saved the repository in.
    * 3.2. Create a new branch for your proposed changes:
    
     ```bash
     git checkout -b <branch-name>
     ```
-    Please replace **<branch-name>** with the actual name of ypur proposed feature.
+    Please replace **<branch-name>** with the actual name of your proposed feature.
 
 4. **Make your changes**
    * 4.1. Open the project in your preferred code editor.
-   * 4.2. Adjust and add to to the code as necessary.
+   * 4.2. Adjust and add to the code as necessary.
 5. **Commit your changes:**
    * 5.1. Add your changes to the staging area:
     ```bash
-    git add .
+    git add.
     ```
    * 5.2. Commit your changes and include a descriptive message of your added feature/s.
     ```bash
@@ -102,13 +102,13 @@ We welcome contributions to this project! To contribute, follow these guidelines
 Please be sure to replace **<branch-name>** with the appropriate name of the branch that you created.
 
 7. **Open a Pull Request**
-   * 7.1. Head to the original 'GitHUb' repository and click on the 'Pull Requests' tab whereafter you should then click the 'New Pull Request' button.
+   * 7.1. Head to the original 'GitHub' repository and click on the 'Pull Requests' tab whereafter you should then click the 'New Pull Request' button.
    * 7.2. Select the branch you pushed your changes to and compare it with the original repository's main branch.
-   * 7.3. Click 'Create Pull Request' and provide a descriptive title as well as a detaild description of your proposed feature.
+   * 7.3. Click 'Create Pull Request' and provide a descriptive title as well as a detailed description of your proposed feature.
    * 7.4. Finally, submit your pull request.
 
 8. **Feedback**
-   * 8.1. Your pull request will be reviewed and checked by the project mainter/s.
+   * 8.1. Your pull request will be reviewed and checked by the project maintainer/s.
    * 8.2. Be on stand-by to make any additional and required changes.
    * 8.3. Upon approval, your changes will be merged into the main branch.
     
