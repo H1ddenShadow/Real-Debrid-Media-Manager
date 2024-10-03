@@ -122,8 +122,8 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 For questions or feedback, please contact:
 
-- **Author:** [Your Name](https://github.com/yourusername)
-- **Email:** your.email@example.com
+- **Author:** [H1ddenShadow](https://github.com/H1ddenShadow)
+- **Email:** caddies.spices0h@icloud.com
 
 ## Acknowledgments
 
