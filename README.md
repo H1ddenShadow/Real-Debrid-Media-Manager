@@ -138,3 +138,6 @@ For questions or feedback, please contact:
     * 'Reddit': 'https://www.reddit.com/r/RealDebrid/comments/14xzfv7/infuse_automatically_add_movies_tv_shows_to/'
     * 'GitLab': 'https://gitlab.com/movieguylmfao/imdb_scraper_public/-/tree/main'
     * 'Discord': 'https://discord.gg/UxTRx7mGAw'
+
+## Disclaimer
+'Real-Debrid Media Manager' does in no way accept liabilty nor responsibility for the abuse of it's scripts for or in the attainment of media, property or objects protected under intellectual property laws (local and international), trademark laws and copyright laws. The media, property or objects in question are in no way, shape or form stored or hosted on any servers nor storage mediums belonging to 'Real-Debrid Media Manager', if any, and any such materials retrieved therein are solely as the result of the users discretion as the scripts/sets of scripts do nothing but merely automate the process between fetching a torrent/magnet and a given media, without the latter, the script or sets of scripts are in no way capable of doing the aforementioned and to that degree, they can not function unless and until the user in question executes the necessary scripts required to run the project: 'Run.py' and/or 'Start.py'; this being as a result of any subproccess or them running said scripts themselves.
