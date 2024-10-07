@@ -142,6 +142,9 @@ For questions or feedback, please contact:
     * 'Reddit': 'https://www.reddit.com/r/RealDebrid/comments/14xzfv7/infuse_automatically_add_movies_tv_shows_to/'
     * 'GitLab': 'https://gitlab.com/movieguylmfao/imdb_scraper_public/-/tree/main'
     * 'Discord': 'https://discord.gg/UxTRx7mGAw'
-
+  * **Riley's**: 'IMDB-Trakt-Syncer' (whose socials to the project may be found down below):
+    * 'Reddit': [Trakt-Trakt-Syncer](https://www.reddit.com/r/trakt/comments/17xd8ic/imdb_trakt_watchlistrating_syncer_tool_sync_both/)
+    * 'GitHub': [IMDB-TRakt-Syncer] (https://github.com/RileyXX/IMDB-Trakt-Syncer)
+      
 ## Disclaimer
 'Real-Debrid Media Manager' does in no way accept liabilty nor responsibility for the abuse of it's scripts for or in the attainment of media, property or objects protected under intellectual property laws (local and international), trademark laws and copyright laws. The media, property or objects in question are in no way, shape or form stored nor hosted on any servers or storage mediums belonging to 'Real-Debrid Media Manager'- if any; such materials retrieved therein are solely the result of the users discretion. The project does nothing but merely automate the process between fetching torrent/magnet links for a given media and adding them to the users 'Real-Debrid' account, without the latter, the script or sets of scripts are in no way capable of doing the aforementioned and adding to that degree, they can in no way function unless and until the user in question executes the necessary scripts required to run the project, those being: 'Run.py' and/or 'Start.py'.
