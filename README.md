@@ -119,8 +119,8 @@ Please make sure your changes adhere to the project's coding standards and pass 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/H1ddenShadow/Real-Debrid-Media-Manager/blob/main/LICENSE) file for details.
 
 ## Socials
-1. *Reddit*: [Reddit](https://www.reddit.com/RDMediaManager/s/NqZtx6e0fe)
-2. *Discord*: [Discord](https://discord.gg/z3gcHgRR)
+1. *Reddit*: [Real-Debird Media Manager](https://www.reddit.com/RDMediaManager)
+2. *Discord*: [Debrid Media Managers](https://discord.gg/z3gcHgRR)
 
 ## Contact
 
