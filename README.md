@@ -128,8 +128,11 @@ For questions or feedback, please contact:
 ## Acknowledgments
 
 - **Libraries and tools** used in the project:
-  * Python
-  * Tkinter
+  * Python.
+  * Tkinter.
+  * Pieces for Developers.
+  * Copilot.
+  * ChatGPT.
 - **Inspiration** or resources that helped in the development of the project:
   * **Movie Guy's** 'IMDB-Scraper' (whose socials to the project may be found down below):
     * 'Reddit': 'https://www.reddit.com/r/RealDebrid/comments/14xzfv7/infuse_automatically_add_movies_tv_shows_to/'
