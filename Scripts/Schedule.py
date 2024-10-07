@@ -28,7 +28,7 @@ archiver_delay = timedelta(minutes=1)
 def create_schedule_config():
     if not os.path.exists(scheduled_runs_path):
         schedule_config = {
-            "enabled": False,  # Set to True to enable scheduling
+            "enabled": True,  # Set to True to enable scheduling
             "times": [
                 "08:00",
                 "12:00",
