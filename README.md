@@ -140,7 +140,7 @@ For questions or feedback, please contact:
 - **Inspiration** or resources that helped in the development of the project:
   * **Movie Guy's**: 'IMDB-Scraper' (whose socials to the project may be found down below):
     * 'Reddit': [IMDB-Scraper](https://www.reddit.com/r/RealDebrid/comments/14xzfv7/infuse_automatically_add_movies_tv_shows_to/)
-    * 'GitLab': [IMDB-Scraper](https://gitlab.com/movieguylmfao/imdb_scraper_public/-/tree/main]
+    * 'GitLab': [IMDB-Scraper](https://gitlab.com/movieguylmfao/imdb_scraper_public/-/tree/main)
     * 'Discord': 'https://discord.gg/UxTRx7mGAw'
   * **Riley's**: 'IMDB-Trakt-Syncer' (whose socials to the project may be found down below):
     * 'Reddit': [IMDB-Trakt-Syncer](https://www.reddit.com/r/trakt/comments/17xd8ic/imdb_trakt_watchlistrating_syncer_tool_sync_both/)
